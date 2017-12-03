@@ -1,7 +1,7 @@
-package com.dolores.chief;
+package com.dolores;
 
-import com.dolores.chief.domain.User;
-import com.dolores.chief.repositories.UserRepository;
+import com.dolores.domain.User;
+import com.dolores.repositories.UserRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;

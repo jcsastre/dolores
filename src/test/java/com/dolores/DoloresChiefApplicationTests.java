@@ -1,4 +1,4 @@
-package com.dolores.chief;
+package com.dolores;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

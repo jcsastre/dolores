@@ -1,6 +1,6 @@
-package com.dolores.chief.api.controllers;
+package com.dolores.api.controllers;
 
-import com.dolores.chief.api.dto.UserPostDto;
+import com.dolores.api.dto.UserPostDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

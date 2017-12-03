@@ -1,6 +1,6 @@
-package com.dolores.chief.repositories;
+package com.dolores.repositories;
 
-import com.dolores.chief.domain.User;
+import com.dolores.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

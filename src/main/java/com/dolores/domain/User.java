@@ -1,4 +1,4 @@
-package com.dolores.chief.domain;
+package com.dolores.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
