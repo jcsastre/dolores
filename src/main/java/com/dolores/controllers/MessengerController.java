@@ -1,9 +1,9 @@
 package com.dolores.controllers;
 
+import com.dolores.chatbot.handlers.PostbackEventHandler;
 import com.dolores.configuration.MessengerConfiguration;
 import com.github.messenger4j.Messenger;
 import com.github.messenger4j.exception.MessengerVerificationException;
-import com.github.messenger4j.webhook.event.PostbackEvent;
 import com.github.messenger4j.webhook.event.TextMessageEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -21,9 +21,11 @@ import static java.util.Optional.of;
 public class MessengerController {
 
     private final Messenger messenger;
+    private final PostbackEventHandler postbackEventHandler;
 
     public MessengerController(
-        MessengerConfiguration messengerConfiguration
+        MessengerConfiguration messengerConfiguration,
+        PostbackEventHandler postbackEventHandler
     ) {
         log.debug(
             "Initializing MessengerReceiveClient - appSecret: {} | verifyToken: {}",
@@ -37,6 +39,8 @@ public class MessengerController {
                 messengerConfiguration.getSecret(),
                 messengerConfiguration.getWebhookVerificationToken()
             );
+
+        this.postbackEventHandler = postbackEventHandler;
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -55,13 +59,13 @@ public class MessengerController {
                     final Instant timestamp = event.timestamp();
 
                     if (event.isPostbackEvent()) {
-                        final PostbackEvent postbackEvent = event.asPostbackEvent();
+                        postbackEventHandler.handle(event.asPostbackEvent());
                     } else if (event.isTextMessageEvent()) {
                         final TextMessageEvent textMessageEvent = event.asTextMessageEvent();
                         final String messageId = textMessageEvent.messageId();
                         final String text = textMessageEvent.text();
 
-                        log.debug("Received text message from '{}' at '{}' with content: {} (mid: {})",
+                        log.info("Received text message from '{}' at '{}' with content: {} (mid: {})",
                             senderId, timestamp, text, messageId);
                     }
                 }
@@ -71,7 +75,7 @@ public class MessengerController {
 
             return ResponseEntity.status(HttpStatus.OK).build();
         } catch (MessengerVerificationException e) {
-            log.warn("Processing of callback payload failed: {}", e.getMessage());
+            log.info("Processing of callback payload failed: {}", e.getMessage());
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         }
     }

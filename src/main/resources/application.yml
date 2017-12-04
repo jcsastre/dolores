@@ -11,3 +11,7 @@ messenger:
   secret: 916d75570fd2b8d9626ac1bf35c1d4a9
   pageAccessToken: EAAevFF2IZAqUBACPK9ud90ofhDZCxS4kMP2jJR5ZCRSicRRZBOWPLP9ZCZCS5M2XG3DkKk7gsXu8anYNkXkIhgqmFbhZCd31lFMydCL9ZCutPFOPUNt3VTnZB7ZB000wiTlBHBx9eZAoORwnsXmgmJM6uqTQwKcUCIsREtGaUNvZAZB0XQQZDZD
   webhookVerificationToken: dolores-verify-token
+
+logging:
+  level:
+    com.dolores.chatbot: debug
