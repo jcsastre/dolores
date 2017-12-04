@@ -18,4 +18,6 @@ public class User {
 
     @Id
     private UUID id;
+
+    private String fbMessengerPsid;
 }

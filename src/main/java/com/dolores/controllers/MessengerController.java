@@ -3,6 +3,7 @@ package com.dolores.controllers;
 import com.dolores.configuration.MessengerConfiguration;
 import com.github.messenger4j.Messenger;
 import com.github.messenger4j.exception.MessengerVerificationException;
+import com.github.messenger4j.webhook.event.PostbackEvent;
 import com.github.messenger4j.webhook.event.TextMessageEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -53,7 +54,9 @@ public class MessengerController {
                     final String senderId = event.senderId();
                     final Instant timestamp = event.timestamp();
 
-                    if (event.isTextMessageEvent()) {
+                    if (event.isPostbackEvent()) {
+                        final PostbackEvent postbackEvent = event.asPostbackEvent();
+                    } else if (event.isTextMessageEvent()) {
                         final TextMessageEvent textMessageEvent = event.asTextMessageEvent();
                         final String messageId = textMessageEvent.messageId();
                         final String text = textMessageEvent.text();

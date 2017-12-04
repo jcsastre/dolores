@@ -1,0 +1,29 @@
+--- Get Started Button ---
+
+curl -X POST -H "Content-Type: application/json" -d '{
+    "get_started":{
+        "payload":"get_started"
+    }
+}' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=EAAevFF2IZAqUBACPK9ud90ofhDZCxS4kMP2jJR5ZCRSicRRZBOWPLP9ZCZCS5M2XG3DkKk7gsXu8anYNkXkIhgqmFbhZCd31lFMydCL9ZCutPFOPUNt3VTnZB7ZB000wiTlBHBx9eZAoORwnsXmgmJM6uqTQwKcUCIsREtGaUNvZAZB0XQQZDZD"
+
+--- Greeting Text ---
+
+curl -X POST -H "Content-Type: application/json" -d '{
+    "greeting":[
+      {
+        "locale":"default",
+        "text":"¿Padeces dolores asociados al cambios en el tiempo? Yo te puedo ayudar a anticiparte a ellos para mejorar tu calidad de vida."
+      }
+    ]
+}' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=EAAevFF2IZAqUBACPK9ud90ofhDZCxS4kMP2jJR5ZCRSicRRZBOWPLP9ZCZCS5M2XG3DkKk7gsXu8anYNkXkIhgqmFbhZCd31lFMydCL9ZCutPFOPUNt3VTnZB7ZB000wiTlBHBx9eZAoORwnsXmgmJM6uqTQwKcUCIsREtGaUNvZAZB0XQQZDZD"
+
+--- Greeting Text (versión con nombre parametrizado) ---
+
+curl -X POST -H "Content-Type: application/json" -d '{
+    "greeting":[
+      {
+        "locale":"default",
+        "text":"Hello {{user_first_name}}!"
+      }
+    ]
+}' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=EAAevFF2IZAqUBACPK9ud90ofhDZCxS4kMP2jJR5ZCRSicRRZBOWPLP9ZCZCS5M2XG3DkKk7gsXu8anYNkXkIhgqmFbhZCd31lFMydCL9ZCutPFOPUNt3VTnZB7ZB000wiTlBHBx9eZAoORwnsXmgmJM6uqTQwKcUCIsREtGaUNvZAZB0XQQZDZD"
